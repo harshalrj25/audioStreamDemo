@@ -16,7 +16,7 @@ Customize the player according to your needs. :wrench:
       
 ## Author :innocent:
 
-harshalrj25, harshalrj25@gmail.com
+My email id, harshalrj25@gmail.com
 
 <table style="background-color:#F5F5DC">
 <tr>
@@ -37,4 +37,4 @@ Harshal Jadhav
 
 ## License
 
-It's all your's
+It's all your's :gift: 
