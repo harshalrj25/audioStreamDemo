@@ -12,6 +12,8 @@
 		AC16F6991EA88C590079DE7F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC16F6971EA88C590079DE7F /* Main.storyboard */; };
 		AC16F69B1EA88C590079DE7F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC16F69A1EA88C590079DE7F /* Assets.xcassets */; };
 		AC16F69E1EA88C590079DE7F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC16F69C1EA88C590079DE7F /* LaunchScreen.storyboard */; };
+		F80C059C1EC47D71006D430B /* firstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F80C059B1EC47D71006D430B /* firstViewController.swift */; };
+		F854FFD61EDC396C00816C03 /* logo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F854FFD51EDC396C00816C03 /* logo.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +24,8 @@
 		AC16F69A1EA88C590079DE7F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AC16F69D1EA88C590079DE7F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AC16F69F1EA88C590079DE7F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F80C059B1EC47D71006D430B /* firstViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = firstViewController.swift; sourceTree = "<group>"; };
+		F854FFD51EDC396C00816C03 /* logo.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = logo.jpg; path = Assets.xcassets/musicLogo.imageset/logo.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,12 +60,22 @@
 			children = (
 				AC16F6931EA88C590079DE7F /* AppDelegate.swift */,
 				AC16F6951EA88C590079DE7F /* PlayerViewController.swift */,
+				F80C059B1EC47D71006D430B /* firstViewController.swift */,
 				AC16F6971EA88C590079DE7F /* Main.storyboard */,
 				AC16F69A1EA88C590079DE7F /* Assets.xcassets */,
 				AC16F69C1EA88C590079DE7F /* LaunchScreen.storyboard */,
 				AC16F69F1EA88C590079DE7F /* Info.plist */,
+				F854FFD71EDC3F5300816C03 /* images */,
 			);
 			path = audioStreamDemo;
+			sourceTree = "<group>";
+		};
+		F854FFD71EDC3F5300816C03 /* images */ = {
+			isa = PBXGroup;
+			children = (
+				F854FFD51EDC396C00816C03 /* logo.jpg */,
+			);
+			name = images;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -96,7 +110,7 @@
 				TargetAttributes = {
 					AC16F68F1EA88C590079DE7F = {
 						CreatedOnToolsVersion = 8.3;
-						DevelopmentTeam = 846K7427SH;
+						DevelopmentTeam = UTX8HE7KPX;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -124,6 +138,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F854FFD61EDC396C00816C03 /* logo.jpg in Resources */,
 				AC16F69E1EA88C590079DE7F /* LaunchScreen.storyboard in Resources */,
 				AC16F69B1EA88C590079DE7F /* Assets.xcassets in Resources */,
 				AC16F6991EA88C590079DE7F /* Main.storyboard in Resources */,
@@ -139,6 +154,7 @@
 			files = (
 				AC16F6961EA88C590079DE7F /* PlayerViewController.swift in Sources */,
 				AC16F6941EA88C590079DE7F /* AppDelegate.swift in Sources */,
+				F80C059C1EC47D71006D430B /* firstViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -262,10 +278,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 846K7427SH;
+				DEVELOPMENT_TEAM = UTX8HE7KPX;
 				INFOPLIST_FILE = audioStreamDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.audioStreamDemo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.harshal.audioplayer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
@@ -277,10 +293,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 846K7427SH;
+				DEVELOPMENT_TEAM = UTX8HE7KPX;
 				INFOPLIST_FILE = audioStreamDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.audioStreamDemo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.harshal.audioplayer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;

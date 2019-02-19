@@ -11,7 +11,6 @@ import AVFoundation
 import AVKit
 
 class PlayerViewController: UIViewController {
-    @IBOutlet weak var thumbNailImageView: UIImageView!
     @IBOutlet weak var playButton: UIButton!
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var prevButton: UIButton!
@@ -20,7 +19,6 @@ class PlayerViewController: UIViewController {
     @IBOutlet weak var currentTimeLabel: UILabel!
     @IBOutlet weak var loadingLabel: UILabel!
     @IBOutlet weak var seekLoadingLabel: UILabel!
-
     var playList: NSMutableArray = NSMutableArray()
     var timer: Timer?
     var index: Int = Int()
@@ -31,11 +29,15 @@ class PlayerViewController: UIViewController {
         super.viewWillAppear(animated)
         isPaused = false
         playButton.setImage(UIImage(named:"pause"), for: .normal)
-        self.playList.add("https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3")
-        self.playList.add("https://www.hrupin.com/wp-content/uploads/mp3/testsong_20_sec.mp3")
-        self.playList.add("https://ia801409.us.archive.org/12/items/1HourThunderstorm/1HrThunderstorm.mp3")
         self.play(url: URL(string:(playList[self.index] as! String))!)
         self.setupTimer()
+    }
+    
+    override func viewWillDisappear( _ animated: Bool) {
+        super.viewWillDisappear(animated)
+        NotificationCenter.default.removeObserver(self)
+        self.avPlayer = nil
+        self.timer?.invalidate()
     }
     
     func play(url:URL) {
@@ -45,18 +47,6 @@ class PlayerViewController: UIViewController {
         }
         avPlayer!.volume = 1.0
         avPlayer.play()
-    }
-    
-    
-    override func viewWillDisappear( _ animated: Bool) {
-        super.viewWillDisappear(animated)
-        NotificationCenter.default.removeObserver(self)
-        self.avPlayer = nil
-        self.timer?.invalidate()
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
     }
     
     @IBAction func playButtonClicked(_ sender: UIButton) {
@@ -201,12 +191,6 @@ class PlayerViewController: UIViewController {
             self.avPlayer = nil
             self.timer?.invalidate()
         }
-    }
-    
-}
-extension AVPlayer {
-    var isPlaying: Bool {
-        return rate != 0 && error == nil
     }
 }
 

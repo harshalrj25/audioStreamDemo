@@ -1,18 +1,58 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="TJC-Le-FoZ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="1xH-Af-pN6">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--SERMON-->
+        <!--First View Controller-->
+        <scene sceneID="2tB-Zd-gKg">
+            <objects>
+                <viewController storyboardIdentifier="firstViewController" id="1xH-Af-pN6" customClass="firstViewController" customModule="audioStreamDemo" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="RM0-0Q-xHN"/>
+                        <viewControllerLayoutGuide type="bottom" id="rlT-au-nb1"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="1Rb-0Q-GvD">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nvo-Pp-rEI">
+                                <rect key="frame" x="40" y="170" width="295" height="60"/>
+                                <color key="backgroundColor" red="0.71372549019999998" green="0.72156862749999995" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="etc-Jf-fdz"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="18"/>
+                                <state key="normal" title="OPEN MUSIC PLAYER">
+                                    <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="clicked:" destination="1xH-Af-pN6" eventType="touchUpInside" id="kGZ-pt-geJ"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="nvo-Pp-rEI" secondAttribute="trailing" constant="40" id="14Z-8v-F3K"/>
+                            <constraint firstItem="nvo-Pp-rEI" firstAttribute="leading" secondItem="1Rb-0Q-GvD" secondAttribute="leading" constant="40" id="Li8-mV-iTR"/>
+                            <constraint firstItem="nvo-Pp-rEI" firstAttribute="top" secondItem="RM0-0Q-xHN" secondAttribute="bottom" constant="150" id="mlJ-zd-51C"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="ifO-Ec-GIU"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bXl-yK-Y6K" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5901.6000000000004" y="337.78110944527737"/>
+        </scene>
+        <!--Player-->
         <scene sceneID="8d8-4l-j7B">
             <objects>
-                <viewController storyboardIdentifier="PlayerViewController" title="SERMON" useStoryboardIdentifierAsRestorationIdentifier="YES" id="TJC-Le-FoZ" customClass="PlayerViewController" customModule="audioStreamDemo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PlayerViewController" title="Player" useStoryboardIdentifierAsRestorationIdentifier="YES" id="TJC-Le-FoZ" customClass="PlayerViewController" customModule="audioStreamDemo" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="8pd-LL-XDh"/>
                         <viewControllerLayoutGuide type="bottom" id="U5W-vt-ZCc"/>
@@ -22,14 +62,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="musicLogo" translatesAutoresizingMaskIntoConstraints="NO" id="6QJ-tB-OxR">
-                                <rect key="frame" x="67" y="100" width="240" height="248"/>
+                                <rect key="frame" x="67.5" y="100" width="240" height="248"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="240" id="tGd-2C-QCV"/>
                                     <constraint firstAttribute="height" constant="248" id="zWg-Ro-mg1"/>
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AJB-Sa-3ce">
-                                <rect key="frame" x="162" y="418" width="50" height="50"/>
+                                <rect key="frame" x="162.5" y="418" width="50" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="50" id="ODi-GU-21m"/>
                                     <constraint firstAttribute="height" constant="50" id="gSh-R0-TvK"/>
@@ -40,7 +80,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AQW-U4-vfT">
-                                <rect key="frame" x="252" y="418" width="50" height="50"/>
+                                <rect key="frame" x="252.5" y="418" width="50" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="50" id="9UZ-SF-qff"/>
                                     <constraint firstAttribute="height" constant="50" id="RpM-ed-YsD"/>
@@ -51,7 +91,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JDE-QP-IOe">
-                                <rect key="frame" x="72" y="418" width="50" height="50"/>
+                                <rect key="frame" x="72.5" y="418" width="50" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="50" id="VWA-bh-dj3"/>
                                     <constraint firstAttribute="height" constant="50" id="m5g-BJ-r3k"/>
@@ -68,7 +108,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="Lun-Bl-WAZ"/>
                                 </constraints>
-                                <color key="thumbTintColor" red="1" green="0.94492903130000006" blue="0.71741241489999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="thumbTintColor" red="0.71372549019607845" green="0.72156862745098038" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <connections>
                                     <action selector="sliderValueChange:" destination="TJC-Le-FoZ" eventType="valueChanged" id="KVS-n7-N87"/>
                                     <outletCollection property="gestureRecognizers" destination="AWO-K9-oCk" appends="YES" id="3na-dP-UGx"/>
@@ -86,18 +126,21 @@
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R9m-kG-FgQ">
                                 <rect key="frame" x="0.0" y="617" width="375" height="50"/>
-                                <color key="backgroundColor" red="0.1960784314" green="0.19215686269999999" blue="0.27450980390000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="backgroundColor" red="0.71372549019607845" green="0.72156862745098038" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="VAW-Hn-6yJ"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="20"/>
-                                <state key="normal">
-                                    <color key="titleColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="BACK">
+                                    <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="backButtonClicked:" destination="TJC-Le-FoZ" eventType="touchUpInside" id="wis-qe-gaW"/>
+                                </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e7L-BC-KH1">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="80"/>
-                                <color key="backgroundColor" red="0.1960784314" green="0.19215686269999999" blue="0.27450980390000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="backgroundColor" red="0.71372549019607845" green="0.72156862745098038" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="80" id="E3u-il-3of"/>
                                 </constraints>
@@ -133,7 +176,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="0.62419344700000001" blue="0.61124485429999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="backgroundColor" red="1" green="0.92930453134663737" blue="0.75374058936602661" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="U5W-vt-ZCc" firstAttribute="top" secondItem="R9m-kG-FgQ" secondAttribute="bottom" id="4pc-41-ghp"/>
@@ -169,7 +212,7 @@
                         <outlet property="currentTimeLabel" destination="JLD-XR-4j9" id="Kng-ab-9D1"/>
                         <outlet property="loadingLabel" destination="AaB-e5-ff5" id="OIp-ml-oIH"/>
                         <outlet property="nextButton" destination="AQW-U4-vfT" id="Eht-kc-Nmm"/>
-                        <outlet property="playButton" destination="AJB-Sa-3ce" id="G6I-TO-gde"/>
+                        <outlet property="playButton" destination="AJB-Sa-3ce" id="UGY-9W-VmG"/>
                         <outlet property="playerSlider" destination="vcb-Nv-EUK" id="Oa7-d6-meb"/>
                         <outlet property="prevButton" destination="JDE-QP-IOe" id="VlF-YM-bjb"/>
                         <outlet property="seekLoadingLabel" destination="xJk-ll-5zS" id="qsa-H7-qiC"/>
@@ -183,13 +226,13 @@
                     </connections>
                 </pongPressGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="5846" y="331"/>
+            <point key="canvasLocation" x="6634" y="338"/>
         </scene>
     </scenes>
     <resources>
-        <image name="musicLogo" width="450" height="450"/>
-        <image name="next" width="100" height="100"/>
-        <image name="play" width="144" height="144"/>
-        <image name="prev" width="100" height="100"/>
+        <image name="musicLogo" width="900" height="900"/>
+        <image name="next" width="200" height="200"/>
+        <image name="play" width="288" height="288"/>
+        <image name="prev" width="200" height="200"/>
     </resources>
 </document>
