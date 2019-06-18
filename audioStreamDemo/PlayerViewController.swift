@@ -1,8 +1,7 @@
 //
 //  PlayerViewController.swift
-//  ChurchConnect
 //
-//  Created by iOSDev1 on 27/02/17.
+//  Created by Harshal Jadhav on 27/02/17.
 //  Copyright © 2017 Harshal Jadhav. All rights reserved.
 //
 
@@ -27,9 +26,12 @@ class PlayerViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        seekLoadingLabel.alpha = 0
         isPaused = false
         playButton.setImage(UIImage(named:"pause"), for: .normal)
-        self.play(url: URL(string:(playList[self.index] as! String))!)
+        guard let songUrlString = playList[self.index] as? String else {return}
+        guard let songUrl = URL(string:songUrlString) else{return}
+        self.play(url: songUrl)
         self.setupTimer()
     }
     
@@ -42,20 +44,13 @@ class PlayerViewController: UIViewController {
     
     func play(url:URL) {
         self.avPlayer = AVPlayer(playerItem: AVPlayerItem(url: url))
-        if #available(iOS 10.0, *) {
-            self.avPlayer.automaticallyWaitsToMinimizeStalling = false
-        }
+        self.avPlayer.automaticallyWaitsToMinimizeStalling = false
         avPlayer!.volume = 1.0
         avPlayer.play()
     }
     
     @IBAction func playButtonClicked(_ sender: UIButton) {
-        if #available(iOS 10.0, *) {
-            self.togglePlayPause()
-        } else {
-            // showAlert "upgrade ios version to use this feature"
-           
-        }
+         self.togglePlayPause()
     }
     
     @available(iOS 10.0, *)
@@ -81,7 +76,7 @@ class PlayerViewController: UIViewController {
     
     @IBAction func sliderValueChange(_ sender: UISlider) {
         let seconds : Int64 = Int64(sender.value)
-        let targetTime:CMTime = CMTimeMake(seconds, 1)
+        let targetTime:CMTime = CMTimeMake(value: seconds, timescale: 1)
         avPlayer!.seek(to: targetTime)
         if(isPaused == false){
             seekLoadingLabel.alpha = 1
@@ -97,7 +92,7 @@ class PlayerViewController: UIViewController {
             let value = slider.minimumValue + delta
             slider.setValue(value, animated: false)
             let seconds : Int64 = Int64(value)
-            let targetTime:CMTime = CMTimeMake(seconds, 1)
+            let targetTime:CMTime = CMTimeMake(value: seconds, timescale: 1)
             avPlayer!.seek(to: targetTime)
             if(isPaused == false){
                 seekLoadingLabel.alpha = 1
@@ -108,20 +103,24 @@ class PlayerViewController: UIViewController {
     func setupTimer(){
         NotificationCenter.default.addObserver(self, selector: #selector(self.didPlayToEnd), name: .AVPlayerItemDidPlayToEndTime, object: nil)
         timer = Timer(timeInterval: 0.001, target: self, selector: #selector(PlayerViewController.tick), userInfo: nil, repeats: true)
-        RunLoop.current.add(timer!, forMode: RunLoopMode.commonModes)
+        RunLoop.current.add(timer!, forMode: RunLoop.Mode.common)
     }
     
-    func didPlayToEnd() {
+    @objc func didPlayToEnd() {
         self.nextTrack()
     }
     
-    func tick(){
-        if(avPlayer.currentTime().seconds == 0.0){
-            loadingLabel.alpha = 1
+    func showLoader(){
+        guard let value = avPlayer.currentItem?.status.rawValue else{return}
+        if(value == 0){
+            self.loadingLabel.isHidden = false
         }else{
-            loadingLabel.alpha = 0
+            self.loadingLabel.isHidden = true
         }
-        
+    }
+    
+    @objc func tick(){
+        showLoader()
         if(isPaused == false){
             if(avPlayer.rate == 0){
                 avPlayer.play()
@@ -130,8 +129,9 @@ class PlayerViewController: UIViewController {
                 seekLoadingLabel.alpha = 0
             }
         }
-        
         if((avPlayer.currentItem?.asset.duration) != nil){
+            if let _ = avPlayer.currentItem?.asset.duration{}else{return}
+            if let _ = avPlayer.currentItem?.currentTime(){}else{return}
             let currentTime1 : CMTime = (avPlayer.currentItem?.asset.duration)!
             let seconds1 : Float64 = CMTimeGetSeconds(currentTime1)
             let time1 : Float = Float(seconds1)
@@ -143,7 +143,6 @@ class PlayerViewController: UIViewController {
             self.playerSlider.value = time
             timeLabel.text =  self.formatTimeFromSeconds(totalSeconds: Int32(Float(Float64(CMTimeGetSeconds((self.avPlayer?.currentItem?.asset.duration)!)))))
             currentTimeLabel.text = self.formatTimeFromSeconds(totalSeconds: Int32(Float(Float64(CMTimeGetSeconds((self.avPlayer?.currentItem?.currentTime())!)))))
-            
         }else{
             playerSlider.value = 0
             playerSlider.minimumValue = 0
@@ -159,8 +158,6 @@ class PlayerViewController: UIViewController {
             isPaused = false
             playButton.setImage(UIImage(named:"pause"), for: .normal)
             self.play(url: URL(string:(playList[self.index] as! String))!)
-          
-            
         }else{
             index = 0
             isPaused = false
@@ -175,7 +172,6 @@ class PlayerViewController: UIViewController {
             isPaused = false
             playButton.setImage(UIImage(named:"pause"), for: .normal)
              self.play(url: URL(string:(playList[self.index] as! String))!)
-            
         }
     }
     
@@ -193,5 +189,3 @@ class PlayerViewController: UIViewController {
         }
     }
 }
-
-
