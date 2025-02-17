@@ -21,7 +21,7 @@ My email id, harshalrj25@gmail.com
 <table style="background-color:#F5F5DC">
 <tr>
 <td>
-<img src="https://github.com/harshalrj25/MasterAssetsRepo/blob/master/myAvatar.jpg" width="180"/>
+<img src="https://github.com/harshalrj25/MasterAssetsRepo/blob/master/myAvatar.png" width="180"/>
 
 Harshal Jadhav
 
